@@ -32,7 +32,12 @@ enum Commands {
         repo: String,
         #[arg(short, long, env = "GITVAULT_PASSPHRASE", hide_env_values = true)]
         passphrase: Option<String>,
-        #[arg(short, long, env = "GITVAULT_BRANCH", default_value = "gitvault-backups")]
+        #[arg(
+            short,
+            long,
+            env = "GITVAULT_BRANCH",
+            default_value = "gitvault-backups"
+        )]
         branch: String,
     },
     /// Restore a directory from a backup archive.
@@ -44,7 +49,12 @@ enum Commands {
         repo: String,
         #[arg(short, long, env = "GITVAULT_PASSPHRASE", hide_env_values = true)]
         passphrase: Option<String>,
-        #[arg(short, long, env = "GITVAULT_BRANCH", default_value = "gitvault-backups")]
+        #[arg(
+            short,
+            long,
+            env = "GITVAULT_BRANCH",
+            default_value = "gitvault-backups"
+        )]
         branch: String,
         #[arg(long)]
         tag: Option<String>,
@@ -53,7 +63,12 @@ enum Commands {
     List {
         #[arg(short, long, env = "GITVAULT_REPO")]
         repo: String,
-        #[arg(short, long, env = "GITVAULT_BRANCH", default_value = "gitvault-backups")]
+        #[arg(
+            short,
+            long,
+            env = "GITVAULT_BRANCH",
+            default_value = "gitvault-backups"
+        )]
         branch: String,
     },
 }
@@ -122,10 +137,7 @@ fn do_backup(
     let backup_dir = workdir.path().join("backups").join(&name);
     fs::create_dir_all(&backup_dir)?;
     fs::write(backup_dir.join("latest.tar.zst.age"), &ciphertext)?;
-    fs::write(
-        backup_dir.join("manifest.json"),
-        manifest.to_json_pretty()?,
-    )?;
+    fs::write(backup_dir.join("manifest.json"), manifest.to_json_pretty()?)?;
 
     // 6. Commit, tag, push.
     let tag = git.commit_tag_push(workdir.path(), &name)?;
