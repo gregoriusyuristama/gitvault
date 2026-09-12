@@ -5,11 +5,7 @@ use secrecy::SecretString;
 use std::io::{Read, Write};
 
 /// Encrypt bytes from `reader` into `writer` using a passphrase (age).
-pub fn encrypt_stream<R: Read, W: Write>(
-    mut reader: R,
-    writer: W,
-    passphrase: &str,
-) -> Result<()> {
+pub fn encrypt_stream<R: Read, W: Write>(mut reader: R, writer: W, passphrase: &str) -> Result<()> {
     let encryptor = age::Encryptor::with_user_passphrase(SecretString::new(passphrase.to_string()));
     let mut output = encryptor
         .wrap_output(writer)
@@ -20,11 +16,7 @@ pub fn encrypt_stream<R: Read, W: Write>(
 }
 
 /// Decrypt bytes from `reader` into `writer` using a passphrase (age).
-pub fn decrypt_stream<R: Read, W: Write>(
-    reader: R,
-    mut writer: W,
-    passphrase: &str,
-) -> Result<()> {
+pub fn decrypt_stream<R: Read, W: Write>(reader: R, mut writer: W, passphrase: &str) -> Result<()> {
     let decryptor = match age::Decryptor::new(reader).context("failed to parse age header")? {
         age::Decryptor::Passphrase(d) => d,
         _ => anyhow::bail!("unsupported encryption format: expected passphrase-encrypted payload"),

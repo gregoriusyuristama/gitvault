@@ -97,10 +97,7 @@ impl GitManager {
         run(workdir, &["add", "-A"])?;
         run(workdir, &["commit", "-m", &msg])?;
         run(workdir, &["tag", "-a", &tag, "-m", &msg])?;
-        run(
-            workdir,
-            &["push", "--set-upstream", "origin", &self.branch],
-        )?;
+        run(workdir, &["push", "--set-upstream", "origin", &self.branch])?;
         run(workdir, &["push", "origin", &tag])?;
         Ok(tag)
     }

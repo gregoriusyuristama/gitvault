@@ -33,7 +33,16 @@ fn test_pack_unpack_nested_directory() {
     pack_directory(src.path(), &mut buf).unwrap();
     unpack_directory(&buf[..], dest.path()).unwrap();
 
-    assert_eq!(fs::read_to_string(dest.path().join("root.txt")).unwrap(), "root");
-    assert_eq!(fs::read_to_string(dest.path().join("sub/a.txt")).unwrap(), "alpha");
-    assert_eq!(fs::read_to_string(dest.path().join("sub/deep/b.txt")).unwrap(), "bravo");
+    assert_eq!(
+        fs::read_to_string(dest.path().join("root.txt")).unwrap(),
+        "root"
+    );
+    assert_eq!(
+        fs::read_to_string(dest.path().join("sub/a.txt")).unwrap(),
+        "alpha"
+    );
+    assert_eq!(
+        fs::read_to_string(dest.path().join("sub/deep/b.txt")).unwrap(),
+        "bravo"
+    );
 }

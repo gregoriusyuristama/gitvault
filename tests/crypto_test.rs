@@ -8,7 +8,11 @@ fn test_encrypt_decrypt_roundtrip() {
 
     let mut encrypted = Vec::new();
     encrypt_stream(&data[..], &mut encrypted, passphrase).expect("encryption failed");
-    assert_ne!(&encrypted[..], &data[..], "ciphertext should differ from plaintext");
+    assert_ne!(
+        &encrypted[..],
+        &data[..],
+        "ciphertext should differ from plaintext"
+    );
 
     let mut decrypted = Vec::new();
     decrypt_stream(Cursor::new(encrypted), &mut decrypted, passphrase).expect("decryption failed");
@@ -23,7 +27,10 @@ fn test_decrypt_wrong_passphrase_fails() {
 
     let mut decrypted = Vec::new();
     let result = decrypt_stream(Cursor::new(encrypted), &mut decrypted, "wrong-pass");
-    assert!(result.is_err(), "decryption with wrong passphrase must fail");
+    assert!(
+        result.is_err(),
+        "decryption with wrong passphrase must fail"
+    );
 }
 
 #[test]
