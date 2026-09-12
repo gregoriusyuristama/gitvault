@@ -19,18 +19,18 @@ Inspired by [Fastlane Match](https://docs.fastlane.tools/actions/match/), for an
 
 ### Homebrew
 ```bash
-brew tap <OWNER>/tap
+brew tap gregoriusyuristama/tap
 brew install gitvault
 ```
 
 ### Shell installer
 ```bash
-curl -fsSL https://raw.githubusercontent.com/<OWNER>/gitvault/main/scripts/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/gregoriusyuristama/gitvault/main/scripts/install.sh | bash
 ```
 
 ### From source
 ```bash
-git clone https://github.com/<OWNER>/gitvault.git
+git clone https://github.com/gregoriusyuristama/gitvault.git
 cd gitvault
 cargo build --release
 ```

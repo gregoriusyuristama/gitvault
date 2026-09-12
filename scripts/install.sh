@@ -3,7 +3,7 @@
 # Usage: curl -fsSL https://raw.githubusercontent.com/<OWNER>/gitvault/main/scripts/install.sh | bash
 set -euo pipefail
 
-OWNER="${GITVAULT_OWNER:-<OWNER>}"
+OWNER="${GITVAULT_OWNER:-gregoriusyuristama}"
 REPO="gitvault"
 INSTALL_DIR="${GITVAULT_INSTALL_DIR:-/usr/local/bin}"
 

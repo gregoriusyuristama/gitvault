@@ -7,26 +7,26 @@
 #   brew install gitvault
 class Gitvault < Formula
   desc "Encrypted Git-backed directory backup CLI"
-  homepage "https://github.com/<OWNER>/gitvault"
+  homepage "https://github.com/gregoriusyuristama/gitvault"
   version "<VERSION>"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/<OWNER>/gitvault/releases/download/v#{version}/gitvault-v#{version}-aarch64-apple-darwin.tar.gz"
+      url "https://github.com/gregoriusyuristama/gitvault/releases/download/v#{version}/gitvault-v#{version}-aarch64-apple-darwin.tar.gz"
       sha256 "<SHA256_MAC_ARM64>"
     else
-      url "https://github.com/<OWNER>/gitvault/releases/download/v#{version}/gitvault-v#{version}-x86_64-apple-darwin.tar.gz"
+      url "https://github.com/gregoriusyuristama/gitvault/releases/download/v#{version}/gitvault-v#{version}-x86_64-apple-darwin.tar.gz"
       sha256 "<SHA256_MAC_X86_64>"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
-      url "https://github.com/<OWNER>/gitvault/releases/download/v#{version}/gitvault-v#{version}-aarch64-unknown-linux-gnu.tar.gz"
+      url "https://github.com/gregoriusyuristama/gitvault/releases/download/v#{version}/gitvault-v#{version}-aarch64-unknown-linux-gnu.tar.gz"
       sha256 "<SHA256_LINUX_ARM64>"
     else
-      url "https://github.com/<OWNER>/gitvault/releases/download/v#{version}/gitvault-v#{version}-x86_64-unknown-linux-gnu.tar.gz"
+      url "https://github.com/gregoriusyuristama/gitvault/releases/download/v#{version}/gitvault-v#{version}-x86_64-unknown-linux-gnu.tar.gz"
       sha256 "<SHA256_LINUX_X86_64>"
     end
   end
