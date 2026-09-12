@@ -1,0 +1,33 @@
+[package]
+name = "gitvault"
+version = "0.1.0"
+edition = "2021"
+authors = ["Hermes Corporation"]
+description = "Encrypted Git-backed directory backup CLI"
+license = "MIT"
+
+[lib]
+name = "gitvault"
+path = "src/lib.rs"
+
+[[bin]]
+name = "gitvault"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "4.4", features = ["derive", "env"] }
+age = { version = "0.10", features = ["armor"] }
+secrecy = "0.8"
+zstd = "0.13"
+tar = "0.4"
+sha2 = "0.10"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+chrono = { version = "0.4", features = ["serde"] }
+anyhow = "1.0"
+tempfile = "3.10"
+zeroize = { version = "1.7", features = ["zeroize_derive"] }
+rpassword = "7.3"
+
+[dev-dependencies]
+tempfile = "3.10"
